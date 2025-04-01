@@ -16,11 +16,16 @@ const db = mysql.createConnection({
   database: 'webadmin_crud'
 })
 
+db.connect()
+
+app.use(cors())
+app.use(express.json())
+
 app.get('/', (req, res) => {
   res.send('server/')
 })
 
-app.get('/get/', (_req, res) => {
+app.get('/getuser/', (_req, res) => {
   const q = 'select * from users'
   db.query(q, (err, result) => {
     if (err) return res.json(err)
