@@ -18,7 +18,12 @@ const db = mysql.createConnection({
 
 db.connect()
 
-app.use(cors())
+// app.use(cors())
+app.use(cors({
+  origin: ['http://localhost:8000', 'http://localhost:8080'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}))
 app.use(express.json())
 
 app.get('/', (req, res) => {
@@ -31,7 +36,22 @@ app.get('/getuser/', (_req, res) => {
     if (err) return res.json(err)
     return res.json(result)
   })
+})
 
+app.post('/register/', (req, res) => {
+  const q = 'insert into login (`username`,`password`) values  (?)'
+  const values = [
+    req.body.username,
+    req.body.password,
+  ]
+  db.query(q, [values], (err, result) => {
+    if (err) return res.json(err)
+    if (result) {
+      return res.json({ Status: 'Success' })
+    } else {
+      return res.json({ Message: 'Invalid' })
+    }
+  })
 })
 
 app.listen(port, () => { console.log('Local Server running on PORT:', port) })
