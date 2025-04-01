@@ -11,7 +11,7 @@ export default function Register() {
   }
   const handleOnSubmit = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:8080/register/', values)
+    axios.post('https://theseashore-github-io.onrender.com/register/', values)
     navigate('/')
   }
   return (

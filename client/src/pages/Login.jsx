@@ -11,7 +11,7 @@ export default function Login() {
   }
   const handleOnSubmit = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:8080/login/', values)
+    axios.post('https://theseashore-github-io.onrender.com/login/', values)
       .then((result) => { console.log(result.data) })
       .catch((err) => { console.log(err) })
     // navigate('/')
