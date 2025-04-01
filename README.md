@@ -1,5 +1,13 @@
 # theseashore.github.io
 
+# NODEJS SERVER
+https://dashboard.render.com/
+
+# GITHUB
+https://github.com/theseashore/theseashore.github.io
+
+
+
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
