@@ -16,6 +16,13 @@ const db = mysql.createConnection({
   database: 'webadmin_crud'
 })
 
+// const db = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'react2'
+// })
+
 db.connect()
 
 // app.use(cors())
@@ -47,6 +54,22 @@ app.post('/register/', (req, res) => {
   db.query(q, [values], (err, result) => {
     if (err) return res.json(err)
     if (result) {
+      return res.json({ Status: 'Success' })
+    } else {
+      return res.json({ Message: 'Invalid' })
+    }
+  })
+})
+
+app.post('/login/', (req, res) => {
+  const q = 'select * from login where `username`=? AND `password`=?'
+  const values = [
+    req.body.username,
+    req.body.password,
+  ]
+  db.query(q, [...values], (err, result) => {
+    if (err) return res.json(err)
+    if (result.length > 0) {
       return res.json({ Status: 'Success' })
     } else {
       return res.json({ Message: 'Invalid' })
