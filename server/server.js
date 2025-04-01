@@ -27,7 +27,7 @@ db.connect()
 
 // app.use(cors())
 app.use(cors({
-  origin: ['http://localhost:8000', 'http://localhost:8080', 'https://theseashore.github.io'],
+  origin: ['http://localhost:8000', 'http://localhost:8080', 'https://theseashore.github.io', 'https://theseashore-github-io.onrender.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }))
